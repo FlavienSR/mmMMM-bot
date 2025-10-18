@@ -13,5 +13,5 @@ class SlashCommands(commands.Cog):
     async def slash_ping(self, interaction: discord.Interaction):
         await interaction.response.send_message("Pong !")
 
-    async def cog_load(self):
-        self.bot.tree.add_command(self.slash_ping)
+async def setup(bot):
+    await bot.add_cog(SlashCommands(bot))

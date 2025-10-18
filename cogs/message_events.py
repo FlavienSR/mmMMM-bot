@@ -15,3 +15,6 @@ class MessageEvents(commands.Cog):
                 await message.channel.send("tg")
 
         await self.bot.process_commands(message)
+
+async def setup(bot):
+    await bot.add_cog(MessageEvents(bot))
