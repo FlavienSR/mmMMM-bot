@@ -23,7 +23,7 @@ async def on_ready():
     try:
         guild = discord.Object(id=1098342509324800000)
         synced = await bot.tree.sync(guild=guild)
-        print(f"{len(synced)} commandes slash sync pour le serveur {guild}")
+        print(f"{len(synced)} commandes slash sync pour le serveur {guild.id}")
     except Exception as e:
         print(f"Erreur de sync : {e}")
 
