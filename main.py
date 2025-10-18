@@ -1,8 +1,12 @@
 import os
 import discord
+import random
+
 from discord.ext import commands
 from discord import app_commands
+
 from dotenv import load_dotenv
+
 from keep_alive import keep_alive
 
 load_dotenv()
@@ -34,7 +38,15 @@ async def ping(ctx):
 async def slashPing(interaction: discord.Interaction):
     await interaction.response.send_message("Pong !")
 
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+    
+    if message.content == "tg":
+        for i in range(random.randint(1,7)):
+            await message.channel.send("tg")
+
+    await bot.process_commands(message)
 
 bot.run(TOKEN)
-
-1098342509324800000
