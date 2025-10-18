@@ -1,10 +1,14 @@
 from discord.ext import commands
+import discord
+
 import random
 import re
+import os
 
 class MessageEvents(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.video_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "media", "kram"))
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -18,6 +22,15 @@ class MessageEvents(commands.Cog):
         pattern = re.compile(r"quoi[\s\?\!\.]*$", re.IGNORECASE)
         if pattern.search(message.content):
             await message.channel.send("FEUR")
+
+        if len(message.content) > 200:
+            try:
+                video_file = random.choice(os.listdir(self.video_dir))
+                video_path = os.path.join(self.video_dir, video_file)
+                file = discord.File(video_path)
+                await message.reply(file=file)
+            except Exception as e:
+                print(f"Error sending file: {e}")
 
 
 async def setup(bot):
