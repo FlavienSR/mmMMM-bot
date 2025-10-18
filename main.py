@@ -11,7 +11,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 keep_alive()
 
 class Bot(commands.Bot):
-    async def on_ready():
+    async def on_ready(self):
         print(f'{bot.user} up')
         try:
             guild = discord.Object(id=1098342509324800000)
