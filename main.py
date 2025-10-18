@@ -10,21 +10,21 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 keep_alive()
 
+class Bot(commands.Bot):
+    async def on_ready():
+        print(f'{bot.user} up')
+        try:
+            guild = discord.Object(id=1098342509324800000)
+            synced = await bot.tree.sync(guild=guild)
+            print(f'{len(synced)} commandes synchro sur le serv {guild.id}')
+        except Exception as e:
+            print(f'Erreur lors de la synchro : {e}')
+
 intents = discord.Intents.default()
 intents.message_content = True
-
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = Bot(command_prefix="!", intents=intents)
 GUILD_ID = discord.Object(id=1098342509324800000)
 
-@bot.event
-async def on_ready():
-    print(f'{bot.user} up')
-    try:
-        guild = discord.Object(id=1098342509324800000)
-        synced = await bot.tree.sync(guild=guild)
-        print(f'{len(synced)} commandes synchro sur le serv {guild.id}')
-    except Exception as e:
-        print(f'Erreur lors de la synchro : {e}')
 
 @bot.command()
 async def ping(ctx):
