@@ -9,10 +9,11 @@ class SlashCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @app_commands.command(name="ping", description="Pour test le bot")
+    @app_commands.command(name="ping", description="Pour test le bot + latence")
     @app_commands.guilds(discord.Object(id=perso),discord.Object(id=rootfarm))
     async def slash_ping(self, interaction: discord.Interaction):
-        await interaction.response.send_message("Pong !")
+        latency_ms = round(interaction.client.latency * 1000)
+        await interaction.response.send_message(f"Pong ! {latency_ms} ms")
 
 async def setup(bot):
     await bot.add_cog(SlashCommands(bot))
