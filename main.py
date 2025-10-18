@@ -30,7 +30,7 @@ async def on_ready():
 async def ping(ctx):
     await ctx.send(f'Pong !')
 
-@bot.command(name="ping", description="Pour test le bot", guild=GUILD_ID)
+@bot.tree.command(name="ping", description="Pour test le bot", guild=GUILD_ID)
 async def slashPing(interaction: discord.Interaction):
     await interaction.response.send_message("Pong !")
 
