@@ -13,6 +13,8 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 intents = discord.Intents.default()
 intents.message_content = True
 
+keep_alive()
+
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
@@ -32,7 +34,6 @@ async def load_cogs():
 
 async def main():
     await load_cogs()
-    keep_alive()
     await bot.start(TOKEN)
 
 asyncio.run(main())
