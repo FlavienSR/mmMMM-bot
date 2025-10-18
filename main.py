@@ -21,9 +21,11 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def on_ready():
     print(f"{bot.user} est prêt.")
     try:
-        guild = discord.Object(id=1098342509324800000)
-        synced = await bot.tree.sync(guild=guild)
-        print(f"{len(synced)} commandes slash sync pour le serveur {guild.id}")
+        guilds_ids = [1098342509324800000, 1288930612048166962]
+        for guild_id in guilds_ids:
+            guild = discord.Object(id=guild_id)
+            synced = await bot.tree.sync(guild=guild)
+            print(f"{len(synced)} commandes slash sync pour le serveur {guild.id}")
     except Exception as e:
         print(f"Erreur de sync : {e}")
 
