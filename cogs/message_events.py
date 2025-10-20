@@ -16,7 +16,7 @@ class MessageEvents(commands.Cog):
             return
 
         if message.content == "tg":
-            for i in range(random.randint(1, 7)):
+            for _ in range(random.randint(1, 7)):
                 await message.channel.send("tg")
 
         pattern_quoi = re.compile(r"quoi[\s\?\!\.]*$", re.IGNORECASE)
@@ -32,8 +32,8 @@ class MessageEvents(commands.Cog):
             except Exception as e:
                 print(f"Error sending file: {e}")
 
-        pattern_mmMM = re.compile(r"^[mM]+[?]?$", re.IGNORECASE)
-        if pattern_mmMM.search(message.content):
+        pattern_mmmm = re.compile(r"^[mM]+[?]?$", re.IGNORECASE)
+        if pattern_mmmm.search(message.content):
             await message.channel.send("^^?")
 
 async def setup(bot):
