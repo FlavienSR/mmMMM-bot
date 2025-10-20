@@ -1,9 +1,9 @@
-from discord.ext import commands
-import discord
-
 import random
 import re
 import os
+
+import discord
+from discord.ext import commands
 
 class MessageEvents(commands.Cog):
     def __init__(self, bot):
@@ -18,7 +18,7 @@ class MessageEvents(commands.Cog):
         if message.content == "tg":
             for i in range(random.randint(1, 7)):
                 await message.channel.send("tg")
-        
+
         pattern_quoi = re.compile(r"quoi[\s\?\!\.]*$", re.IGNORECASE)
         if pattern_quoi.search(message.content):
             await message.channel.send("FEUR")
