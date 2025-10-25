@@ -36,5 +36,10 @@ class MessageEvents(commands.Cog):
         if pattern_mmmm.search(message.content):
             await message.channel.send("^^?")
 
+        if message.author.id == 366983115975163904: # gabriel
+            rdm = random.randint(1, 2)
+            if rdm == 1:
+                await message.channel.send("nn m'en fous tg gabriel ^^")
+
 async def setup(bot):
     await bot.add_cog(MessageEvents(bot))
