@@ -1,5 +1,6 @@
 import re
 import asyncio
+import random
 from datetime import datetime, timedelta
 
 import discord
@@ -59,6 +60,12 @@ class SlashCommands(commands.Cog):
                 await interaction.user.send(f"RAPPEL : {raison}")
         else:
             await interaction.response.send_message(f"Mauvais formattage. (Rappel: jj/mm/aaaa hh:mm OU XXj/h/m/s")
+
+    @app_commands.command(name="gay", description="T'es gay à combien de %")
+    @app_commands.guilds(discord.Object(id=PERSO),discord.Object(id=ROOTFARM))
+    async def simprate(self, interaction: discord.Interaction, user: discord.User = None):
+        user = user or interaction.user
+        await interaction.response.send_message(f"💞 {user.mention} est gay à **{random.randint(0, 100)}%**")
 
 async def setup(bot):
     await bot.add_cog(SlashCommands(bot))
