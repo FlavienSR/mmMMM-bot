@@ -5,6 +5,8 @@ import os
 import discord
 from discord.ext import commands
 
+gabriel = 366983115975163904
+maxime = 605347934870962177
 class MessageEvents(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -36,10 +38,10 @@ class MessageEvents(commands.Cog):
         if pattern_mmmm.search(message.content):
             await message.channel.send("^^?")
 
-        if message.author.id == 366983115975163904: # gabriel
+        if message.author.id == gabriel or message.author.id == maxime:
             rdm = random.randint(1, 2)
             if rdm == 1:
-                await message.channel.send("nn m'en fous tg gabriel ^^")
+                await message.channel.send("nn m'en fous tg ^^")
 
 async def setup(bot):
     await bot.add_cog(MessageEvents(bot))
